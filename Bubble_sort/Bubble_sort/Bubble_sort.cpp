@@ -5,11 +5,8 @@
 #include <stdlib.h>
 #include <iostream>
 
-int counts = 0;
-
+int LoopTimes = 0;
 using namespace std;
-
-
 
 template<typename T>
 void swap_(T* priv, T* next) {
@@ -19,7 +16,6 @@ void swap_(T* priv, T* next) {
 	*next = temp;
 }
 
-
 template<typename T>
 void bubble_sort(T arr[], int arrLength) {
 	for (int i = arrLength - 1; i > 0; i--) {
@@ -27,20 +23,20 @@ void bubble_sort(T arr[], int arrLength) {
 			if (arr[j] > arr[j + 1]) {
 				swap_(&arr[j], &arr[j + 1]);
 			}
-			counts++;
+			LoopTimes++;
 		}
 	}
 }
 
 template<typename T>
 void bubble_sort_bool(T arr[], int arrLength) {
-	for (bool sorted = false;sorted = !sorted ; arrLength --) {
+	for (bool sorted = false; sorted = !sorted; arrLength--) {
 		for (int j = 0; j < arrLength; j++) {
-			if (arr[j-1] > arr[j]) {
-				swap_(&arr[j-1], &arr[j ]);
+			if (arr[j - 1] > arr[j]) {
+				swap_(&arr[j - 1], &arr[j]);
 				sorted = false;
 			}
-			counts++;
+			LoopTimes++;
 		}
 	}
 }
@@ -48,18 +44,15 @@ void bubble_sort_bool(T arr[], int arrLength) {
 template<typename T>
 void traversal(T arr[], int arrLength) {
 	for (int i = 0; i < arrLength; i++)
-		cout << arr[i] << endl;
-	cout << endl;
+		cout << "---" << arr[i] << "---" << endl;
 }
-
-
 
 int main() {
 	int arr[] = { 61, 17, 29, 22, 34, 60, 72, 21, 50, 1, 62 };
-	int len = sizeof(arr)/sizeof(int);
-	bubble_sort_bool(arr, len);
+	int len = sizeof(arr) / sizeof(int);
+	bubble_sort(arr, len);
 	traversal(arr, len);
-	cout << "counts: " << counts <<endl;
+	cout << "loop times: " << LoopTimes << endl;
 
 	system("pause");
 }
